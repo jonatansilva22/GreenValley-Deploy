@@ -1,0 +1,218 @@
+.login-page {
+    display: flex;
+    height: 100vh; 
+    width: 100vw; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .square-left img {
+    position: absolute; 
+    top: 35%; 
+    left: 30%; 
+    transform: translate(-50%, -50%); 
+    max-width: 60%; 
+    max-height: 60%; 
+  }
+
+  .image-text {
+    position: absolute; 
+    left: 30%; 
+    top: 55%;
+    transform: translateX(-50%); 
+    font-family: fredoka one;
+    font-weight: bold;
+    font-size: 42px; 
+    color: #0B2A3F; 
+  }
+
+  .vertical-line1 {
+    width: 0.5vh; 
+    height: 88vh; 
+    position: absolute;
+    top: 5%; 
+    left: 58%; 
+    transform: translateX(-50%); 
+    background-color: #81CD22; 
+  }
+  
+  .vertical-line2 {
+    width: 0.5vh; 
+    height: 88vh; 
+    position: absolute;
+    top: 5%; 
+    left: 2%; 
+    transform: translateX(-50%); 
+    background-color: #81CD22; 
+  }
+
+  .vertical-line3 {
+    width: 56.25vw; 
+    height: 0.5vh; 
+    position: absolute;
+    top: 5%; 
+    left: 1.8%; 
+    transform: translateY(-50%); 
+    background-color: #81CD22; 
+  }
+  
+  .vertical-line4 {
+    width: 56.25vw; 
+    height: 0.5vh; 
+    position: absolute;
+    top: 93%; 
+    left: 1.8%;
+    transform: translateY(-50%); 
+    background-color: #81CD22; 
+  }
+
+  .vertical-line5 {
+    width: 40vw; 
+    height: 0.5vh; 
+    position: absolute;
+    top: 5%; 
+    left: 58%; 
+    transform: translateY(-50%);
+    background-color: #81CD22; 
+  }
+  
+    .vertical-line6 {
+    width: 0.5vh;
+    height: 88vh;
+    position: absolute;
+    top: 5%; 
+    left: 97.9%; 
+    transform: translateX(-50%); 
+    background-color: #81CD22; 
+  }
+
+    .vertical-line7 {
+    width: 40vw; 
+    height: 0.5vh;
+    position: absolute;
+    top: 93%; 
+    left: 58%;
+    transform: translateY(-50%);
+    background-color: #81CD22; 
+  }
+
+  .login-icon{
+    position: absolute; 
+    top: 20%; 
+    left: 78%;
+    transform: translate(-50%, -50%); 
+    max-width: 10%; 
+    max-height: 10%; 
+  }
+
+  .login-text {
+    position: absolute; 
+    left: 78%; 
+    top: 18%;
+    transform: translateX(-50%);
+    font-family: fredoka one;
+    font-weight: bold;
+    font-size: 36px; 
+    color: #0B2A3F;
+  }
+
+  .email-text {
+    position: absolute; 
+    left: 78%; 
+    top: 32%;
+    transform: translateX(-50%); 
+    font-family: kadwa;
+    font-weight: bold;
+    font-size: 28px; 
+    color: #000000; 
+  }
+
+  .email-input {
+    position: absolute;
+    top: 45%;
+    left: 67%;
+    width: 300px;
+    height: 40px; 
+    background-color: white; 
+    color: black; 
+    font-size: 16px; 
+    border: 1px solid black; 
+    border-radius: 10px; 
+    padding: 8px; 
+    box-sizing: border-box; 
+}
+
+.password-text {
+  position: absolute; 
+  left: 78%; 
+  top: 50%;
+  transform: translateX(-50%); 
+  font-family: kadwa;
+  font-weight: bold;
+  font-size: 28px; 
+  color: #000000; 
+}
+
+.password-input {
+  position: absolute;
+  top: 63%;
+  left: 67%;
+  width: 300px; 
+  height: 40px; 
+  background-color: white; 
+  color: black; 
+  font-size: 16px; 
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 8px; 
+  box-sizing: border-box;
+}
+
+
+
+.user-icon {
+    position: absolute; 
+    top: 48%; 
+    left: 65%;
+    transform: translate(-50%, -50%); 
+    max-width: 4%;
+    max-height: 5%;
+}
+
+.key-icon {
+    position: absolute; 
+    top: 66%; 
+    left: 65%;
+    transform: translate(-50%, -50%); 
+    max-width: 5%; 
+    max-height: 5%; 
+}
+
+.login-button{
+  position: absolute;
+  left: 70%;
+  top: 78%;
+  width: 15vw; 
+  height: 6vh; 
+  padding: 2px;
+  background-color: #0B2A3F; 
+  color: #FFFF; 
+  font-size: 24px; 
+  font-family: inter;
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+.login-button:hover {
+  background-color: #000000; 
+}
+
+.error-message{
+  color: #df0b0b;
+  position: absolute;
+  left: 63%;
+  top: 68%;
+}
+
+  

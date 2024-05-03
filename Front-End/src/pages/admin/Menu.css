@@ -1,0 +1,121 @@
+h1{
+    position: absolute;
+    left: 1%;
+    top: 0%;
+    width: 97%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75px;
+    color: #0b2a3f;
+    background-color: #81cd22;
+    border: solid;
+    border-width: 5px;
+}
+
+#li_inventario{
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #0b2a3f;
+    border-style: solid;
+    border-color: #0b2a3f;
+    border-width: 5px;
+    background-color: #81cd22;
+    width: 300px;
+    height: 300px;
+    list-style-type: none;
+    padding-left: 0;
+    position: absolute;
+    left: 8%;
+    top: 30%;
+}
+
+#li_inventario:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  } 
+
+#li_ventas{
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #0b2a3f;
+    border-style: solid;
+    border-color: #0b2a3f;
+    border-width: 5px;
+    background-color: #81cd22;
+    width: 300px;
+    height: 300px;
+    list-style-type: none;
+    padding-left: 0;
+    position: absolute;
+    left: 38%;
+    top: 30%;
+}
+
+#li_ventas:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  } 
+
+#li_informes{
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #0b2a3f;
+    border-style: solid;
+    border-color: #0b2a3f;
+    border-width: 5px;
+    background-color: #81cd22;
+    width: 300px;
+    height: 300px;
+    list-style-type: none;
+    padding-left: 0;
+    position: absolute;
+    left: 68%;
+    top: 30%;
+}
+
+#li_informes:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  } 
+
+#imagenes{
+    margin-left: 30px;
+    width: 230px;
+    height: 230px;
+    position: relative;
+    align-items: center;
+}
+
+#lista{
+    width: 400px;
+}
+
+#enlace{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: #0b2a3f;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  #p-login{
+  position: absolute;
+  top: 85%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: #0b2a3f;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer; /* Cambia el cursor a una manita */
+  margin-left: 20px;
+  }
+
+  #p-login:hover {
+    color: #81cd22;
+  }
