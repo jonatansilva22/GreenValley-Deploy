@@ -25,3 +25,4 @@ dist-ssr
 node_modules/*
 .idea/
 ../Back-End/node_modules/
+../Database/node_modules/

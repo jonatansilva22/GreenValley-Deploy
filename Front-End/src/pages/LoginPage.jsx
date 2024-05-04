@@ -23,11 +23,15 @@ function LoginPage() {
         navigate('/menu'); // Si la respuesta del servidor indica éxito, redirige al usuario al menú
       } else {
         setErrorMessage(response.data.message); // Si hay un error, muestra el mensaje de error del servidor
+        setEmail('');
+        setPassword('');
       }
     })
     .catch(error => {
       console.error('Error al iniciar sesión:', error);
       setErrorMessage('Credenciales incorrectas. Por favor, inténtalo de nuevo.'); // Muestra un mensaje de error genérico
+      setEmail('');
+        setPassword('');
     });
   };
 

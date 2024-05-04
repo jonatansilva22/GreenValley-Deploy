@@ -91,6 +91,40 @@ app.post('/products', (req, res) => {
     });
 });
 
+app.get('/reports', (req, res) => {
+    // Consulta SQL para seleccionar los movimientos
+    const sql = `SELECT idMovimiento, idProducto, tipo, cantidad, venta, movFechaHora FROM Movimiento`;
+
+    // Ejecutar la consulta
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error('Error al obtener los movimientos:', err.message);
+            res.status(500).json({ error: 'Error interno del servidor' });
+            return;
+        }
+
+        // Si hay movimientos, enviarlos como respuesta
+        res.json(rows);
+    });
+});
+
+app.get('/sales', (req, res) => {
+    // Consulta SQL para seleccionar los movimientos de venta
+    const sql = `SELECT idMovimiento, idProducto, tipo, cantidad, movFechaHora FROM Movimiento WHERE venta = 1`;
+
+    // Ejecutar la consulta
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error('Error al obtener las ventas:', err.message);
+            res.status(500).json({ error: 'Error interno del servidor' });
+            return;
+        }
+
+        // Si hay ventas, enviarlas como respuesta
+        res.json(rows);
+    });
+});
+
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor Express corriendo en el puerto ${PORT}`);

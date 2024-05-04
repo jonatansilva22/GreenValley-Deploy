@@ -47,6 +47,16 @@ CREATE TABLE IF NOT EXISTS Articulo_Vendido (
     FOREIGN KEY (idProductoPedido) REFERENCES Producto_Pedido(idProductoPedido)
 );
 
+CREATE TABLE IF NOT EXISTS Movimiento (
+    idMovimiento INTEGER PRIMARY KEY AUTOINCREMENT,
+    idProducto INTEGER,
+    tipo TEXT CHECK(tipo IN ('alta', 'baja')),
+    cantidad INTEGER,
+    venta INTEGER CHECK(venta IN (0, 1)),
+    movFechaHora DATETIME,
+    FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
+);
+
 -- Insertar datos en la tabla Usuario
 INSERT INTO Usuario (nombre, correo, contraseña, tipoUsuario) 
 VALUES 

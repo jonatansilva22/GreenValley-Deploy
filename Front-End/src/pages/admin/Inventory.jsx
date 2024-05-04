@@ -49,6 +49,7 @@ function Inventory() {
         <div id="btnHome">
           <p id='p-menu' onClick={() => navigate('/menu')}>Menu</p>
         </div>
+        <div id="inventory-container-wrapper">
         <table id="inventory-container">
           <thead>
             <tr>
@@ -74,8 +75,11 @@ function Inventory() {
           </tbody>
         </table>
         <br />
+        <div id='btn-container'>
         <button id="btnBaja" onClick={handleClickDelete}>Dar de baja</button>
         <button id="btnAlta" onClick={() => navigate('/register')}>Alta de productos</button>
+        </div>
+        </div>
       </div>
     </div>
   );
