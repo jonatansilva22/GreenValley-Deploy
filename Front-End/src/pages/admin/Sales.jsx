@@ -24,28 +24,30 @@ function Sales() {
     <div>
       <h1 id='ventas'>Ventas</h1>
       <p id='p-menu' onClick={() => navigate('/menu')}>Menu</p>
-      <table>
-        <thead>
-          <tr>
-            <th>ID Movimiento</th>
-            <th>ID Producto</th>
-            <th>Tipo</th>
-            <th>Cantidad</th>
-            <th>Fecha y Hora</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ventas.map((venta) => (
-            <tr key={venta.idMovimiento}>
-              <td>{venta.idMovimiento}</td>
-              <td>{venta.idProducto}</td>
-              <td>{venta.tipo}</td>
-              <td>{venta.cantidad}</td>
-              <td>{venta.movFechaHora}</td>
+      <div id="sales-container-wrapper">
+        <table id="sales-container">
+          <thead>
+            <tr>
+              <th>ID Movimiento</th>
+              <th>ID Producto</th>
+              <th>Tipo</th>
+              <th>Cantidad</th>
+              <th>Fecha y Hora</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {ventas.map((venta) => (
+              <tr key={venta.idMovimiento}>
+                <td>{venta.idMovimiento}</td>
+                <td>{venta.idProducto}</td>
+                <td>{venta.tipo}</td>
+                <td>{venta.cantidad}</td>
+                <td>{venta.movFechaHora}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

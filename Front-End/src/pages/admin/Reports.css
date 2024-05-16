@@ -18,3 +18,29 @@
 #p-menu:hover {
     color: #81cd22;
   }
+
+  #reports-container {
+    font-family: 'inter', sans-serif;
+    color: #000000;
+    font-size: 16px;
+    border-collapse: collapse; /* Colapsar bordes de la tabla */
+    width: 80%;
+    margin: 20px auto; /* Centrar la tabla horizontalmente */
+  }
+  
+  #reports-container th, #reports-container td {
+    background-color: #f2f2f2;
+    border: 1px solid #dddddd; /* Agregar bordes a las celdas */
+    padding: 8px; /* Agregar espacio interno */
+    text-align: left; /* Alinear texto a la izquierda */
+  }
+  
+  #reports-container th {
+    background-color: #0B2A3F; /* Color de fondo para encabezados */
+    color: #FFFF;
+  }
+  
+  #reports-container-wrapper {
+    max-height: 70vh; /* Establece una altura máxima para el contenedor */
+    overflow-y: auto; /* Agrega un desplazamiento vertical cuando la tabla sea más larga que la altura máxima */
+  }
