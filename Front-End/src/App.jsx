@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import Menu from "./pages/admin/Menu.jsx";
 import Inventory from "./pages/admin/Inventory.jsx";
 import RegisterProduct from "./pages/admin/RegisterProduct.jsx";
+import EditProduct from "./pages/admin/EditProduct.jsx";
 import Sales from "./pages/admin/Sales.jsx";
 import Reports from "./pages/admin/Reports.jsx";
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/register" element={<RegisterProduct />} />
+          <Route path="/edit/:idProducto" element={<EditProduct />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/" element={<LoginPage />} />

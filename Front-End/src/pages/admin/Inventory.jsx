@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Importa Axios
+import axios from 'axios';
 import './Inventory.css';
 
 function Inventory() {
@@ -42,6 +42,10 @@ function Inventory() {
     }
   };
 
+  const handleEditProduct = (idProducto) => {
+    navigate(`/edit/${idProducto}`);
+  };
+
   return (
     <div>
       <h1>Inventario</h1>
@@ -50,35 +54,39 @@ function Inventory() {
           <p id='p-menu' onClick={() => navigate('/menu')}>Menu</p>
         </div>
         <div id="inventory-container-wrapper">
-        <table id="inventory-container">
-          <thead>
-            <tr>
-            <th></th>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Precio Venta</th>
-              <th>Categoría</th>
-              <th>Cantidad en Stock</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.idProducto}>
-                <td><input type="checkbox" value={product.idProducto} /></td>
-                <td>{product.idProducto}</td>
-                <td>{product.nombre}</td>
-                <td>{product.precioVenta}</td>
-                <td>{product.categoría}</td>
-                <td>{product.cantidadEnStock}</td>
+          <table id="inventory-container">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio Venta</th>
+                <th>Categoría</th>
+                <th>Cantidad en Stock</th>
+                <th  className="edit-column">Modificar</th> {/* Nueva columna para el botón de editar */}
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <br />
-        <div id='btn-container'>
-        <button id="btnBaja" onClick={handleClickDelete}>Dar de baja</button>
-        <button id="btnAlta" onClick={() => navigate('/register')}>Alta de productos</button>
-        </div>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr key={product.idProducto}>
+                  <td><input type="checkbox" value={product.idProducto} /></td>
+                  <td>{product.idProducto}</td>
+                  <td>{product.nombre}</td>
+                  <td>{product.precioVenta}</td>
+                  <td>{product.categoría}</td>
+                  <td>{product.cantidadEnStock}</td>
+                  <td className="edit-cell">
+                    <button onClick={() => handleEditProduct(product.idProducto)}>Editar</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <br />
+          <div id='btn-container'>
+            <button id="btnBaja" onClick={handleClickDelete}>Dar de baja</button>
+            <button id="btnAlta" onClick={() => navigate('/register')}>Alta de productos</button>
+          </div>
         </div>
       </div>
     </div>

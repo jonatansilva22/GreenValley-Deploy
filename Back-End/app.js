@@ -58,6 +58,30 @@ app.get('/inventory', (req, res) => {
     });
 });
 
+// Ruta GET para obtener un producto por su ID
+app.get('/products/:idProducto', (req, res) => {
+    const { idProducto } = req.params;
+
+    // Consulta SQL para seleccionar un producto por su ID
+    const sql = `SELECT idProducto, nombre, precioVenta, categoría, cantidadEnStock FROM Producto WHERE idProducto = ?`;
+
+    // Ejecutar la consulta con el ID del producto proporcionado en los parámetros
+    db.get(sql, [idProducto], (err, row) => {
+        if (err) {
+            console.error('Error al obtener el producto:', err.message);
+            res.status(500).json({ error: 'Error interno del servidor' });
+            return;
+        }
+
+        // Si el producto se encontró, enviarlo como respuesta
+        if (row) {
+            res.json(row);
+        } else {
+            res.status(404).json({ error: 'Producto no encontrado' });
+        }
+    });
+});
+
 // Ruta DELETE para eliminar un producto por su idProducto
 app.delete('/inventory/:idProducto', (req, res) => {
     const idProducto = req.params.idProducto;
@@ -90,6 +114,8 @@ app.post('/products', (req, res) => {
         res.status(201).json({ idProducto, nombre, precioVenta, categoría, cantidadEnStock });
     });
 });
+
+
 
 app.get('/reports', (req, res) => {
     // Consulta SQL para seleccionar los movimientos
@@ -124,6 +150,30 @@ app.get('/sales', (req, res) => {
         res.json(rows);
     });
 });
+
+// Endpoint para actualizar un producto
+app.put('/edit/:idProducto', (req, res) => {
+    const { idProducto } = req.params;
+    const { nombre, precioVenta, categoría, cantidadEnStock } = req.body;
+
+    // Actualiza el producto en la base de datos
+    db.run('UPDATE Producto SET nombre = ?, precioVenta = ?, categoría = ?, cantidadEnStock = ? WHERE idProducto = ?', [nombre, precioVenta, categoría, cantidadEnStock, idProducto], function(err) {
+        if (err) {
+            console.error('Error al actualizar el producto:', err.message);
+            res.status(500).json({ error: 'Error interno del servidor' });
+            return;
+        }
+
+        if (this.changes === 0) {
+            res.status(404).json({ error: 'Producto no encontrado' });
+            return;
+        }
+
+        // Devuelve el producto actualizado
+        res.status(200).json({ idProducto, nombre, precioVenta, categoría, cantidadEnStock });
+    });
+});
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {

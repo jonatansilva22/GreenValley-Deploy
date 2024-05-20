@@ -91,5 +91,24 @@ h1{
     color: #FFFF;
   }
 
+  #inventory-container .edit-cell button {
+    padding: 6px;
+    background-color: #0B2A3F;
+    color: #FFFF;
+    font-size: 20px;
+    font-family: inter;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* Para que el botón sea un bloque */
+    margin: 0 auto; /* Para centrar horizontalmente */
+    vertical-align: middle; /* Para centrar verticalmente */
+  }
+
+  #inventory-container .edit-cell button:hover {
+    background-color: #000000 !important; 
+  }
+
+
 
   

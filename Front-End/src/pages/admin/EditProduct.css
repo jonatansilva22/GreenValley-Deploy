@@ -1,0 +1,93 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75px;
+    color: #0b2a3f;
+    background-color: #81cd22;
+    border: solid;
+    border-width: 5px;
+
+}
+
+
+#p-inventario{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #0b2a3f;
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: 15%;
+}
+
+#p-inventario:hover{
+    color: #81cd22;
+    cursor: pointer; /* Cambia el cursor a una manita */
+}
+
+#p-menu{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #0b2a3f;
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: 25%;
+}
+
+#p-menu:hover{
+    color: #81cd22;
+    cursor: pointer; /* Cambia el cursor a una manita */
+}
+
+
+
+
+#botones {
+    width: 70px;
+    margin-top: 240px;
+    margin-left: 10px;
+}
+
+#btnGuardar{
+    width: 170px; 
+    height: 6vh; 
+    padding: 2px;
+    background-color: #0B2A3F; 
+    color: #FFFF; 
+    font-size: 24px; 
+    font-family: inter;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-left: 10px;
+}
+#btnGuardar:hover {
+    background-color: #000000; 
+}
+
+#altaProductoForm input{
+    width: 300px;
+    height: 35px; 
+    background-color: white; 
+    color: black; 
+    font-size: 16px; 
+    border: 1px solid black; 
+    border-radius: 10px; 
+    padding: 8px; 
+    box-sizing: border-box;
+    display: block;
+    width: 250%;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+#altaProductoForm label{
+    width: 300px;
+    height: 40px; 
+    color: black;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+}
