@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Importa Axios
 import './Sales.css'; // Archivo CSS para estilos
 
+//Este es un comentario
 function Sales() {
   const navigate = useNavigate();
   const [ventas, setVentas] = useState([]);

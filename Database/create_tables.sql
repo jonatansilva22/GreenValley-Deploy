@@ -24,9 +24,10 @@ CREATE TABLE IF NOT EXISTS Pedido (
     idUsuario INTEGER,
     pedidoFechaHora DATETIME,
     ventaFechaHora DATETIME,
-    estado TEXT,
+    estado TEXT CHECK(estado IN ('pendiente', 'vendido','cancelado')), -- Corrección 1 y 2
     FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
-);
+); 
+
 
 -- Tabla Producto_Pedido
 CREATE TABLE IF NOT EXISTS Producto_Pedido (
@@ -56,6 +57,61 @@ CREATE TABLE IF NOT EXISTS Movimiento (
     movFechaHora DATETIME,
     FOREIGN KEY (idProducto) REFERENCES Producto(idProducto)
 );
+
+CREATE TRIGGER IF NOT EXISTS trigger_producto_update
+AFTER UPDATE OF cantidadEnStock ON Producto
+FOR EACH ROW
+BEGIN
+    -- Comparar la cantidad antigua con la nueva
+    -- Si la cantidad nueva es mayor que la antigua, es un movimiento de "alta"
+    -- Si la cantidad nueva es menor que la antigua, es un movimiento de "baja"
+    -- Calcular la diferencia entre las cantidades
+
+    -- Movimiento de "alta"
+    INSERT INTO Movimiento (idProducto, tipo, cantidad, movFechaHora, venta)
+    SELECT NEW.idProducto, 'alta', NEW.cantidadEnStock - OLD.cantidadEnStock, datetime('now'), 0
+    WHERE NEW.cantidadEnStock > OLD.cantidadEnStock;
+
+    -- Movimiento de "baja"
+    INSERT INTO Movimiento (idProducto, tipo, cantidad, movFechaHora, venta)
+    SELECT NEW.idProducto, 'baja', OLD.cantidadEnStock - NEW.cantidadEnStock, datetime('now'), 0
+    WHERE NEW.cantidadEnStock < OLD.cantidadEnStock;
+END;
+
+CREATE TRIGGER IF NOT EXISTS trigger_pedido_vendido
+AFTER UPDATE OF estado ON Pedido
+FOR EACH ROW
+WHEN NEW.estado = 'vendido'
+BEGIN
+    -- Insertar registros en la tabla Articulo_Vendido
+    INSERT INTO Articulo_Vendido (idProductoPedido, utilidad, porcentajeUtilidad)
+    SELECT pp.idProductoPedido, 
+           (p.precioVenta - p.costoArticulo) * pp.cantidadSolicitada AS utilidad,
+           ((p.precioVenta - p.costoArticulo) / p.costoArticulo) * 100 AS porcentajeUtilidad
+    FROM Producto_Pedido pp
+    JOIN Producto p ON pp.idProducto = p.idProducto
+    WHERE pp.idPedido = NEW.idPedido;
+
+    -- Insertar registros en la tabla Movimiento para cada artículo vendido
+    INSERT INTO Movimiento (idProducto, tipo, cantidad, movFechaHora, venta)
+    SELECT pp.idProducto, 'baja', pp.cantidadSolicitada, datetime('now'), 1
+    FROM Producto_Pedido pp
+    WHERE pp.idPedido = NEW.idPedido;
+    
+    -- Actualizar la cantidad en stock de los productos vendidos
+    UPDATE Producto
+    SET cantidadEnStock = cantidadEnStock - (
+        SELECT SUM(pp.cantidadSolicitada)
+        FROM Producto_Pedido pp
+        WHERE pp.idProducto = Producto.idProducto
+          AND pp.idPedido = NEW.idPedido
+    )
+    WHERE idProducto IN (
+        SELECT idProducto
+        FROM Producto_Pedido
+        WHERE idPedido = NEW.idPedido
+    );
+END;
 
 -- Insertar datos en la tabla Usuario
 INSERT INTO Usuario (nombre, correo, contraseña, tipoUsuario) 
