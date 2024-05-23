@@ -160,7 +160,28 @@ app.get('/sales', (req, res) => {
 });
 
 // Endpoint para actualizar un producto
+app.put('/edit/:idProducto', (req, res) => {
+    const { idProducto } = req.params;
+    const { nombre, precioVenta, categoría, cantidadEnStock } = req.body;
 
+    db.run('UPDATE Producto SET nombre = ?, precioVenta = ?, categoría = ?, cantidadEnStock = ? WHERE idProducto = ?', [nombre, precioVenta, categoría, cantidadEnStock, idProducto], function(err) {
+        if (err) {
+            console.error('Error al actualizar el producto:', err.message);
+            res.status(500).json({ error: 'Error interno del servidor' });
+            return;
+        }
+        if (this.changes > 0) {
+            db.run('INSERT INTO Movimiento (idProducto, tipo, cantidad) VALUES (?, ?, ?)', [idProducto, 'editado', cantidadEnStock], (err) => {
+                if (err) {
+                    console.error('Error al registrar el movimiento:', err.message);
+                }
+            });
+            res.status(200).json({ idProducto, nombre, precioVenta, categoría, cantidadEnStock });
+        } else {
+            res.status(404).json({ error: 'Producto no encontrado' });
+        }
+    });
+});
 
 // Iniciar el servidor
 app.listen(PORT, () => {
